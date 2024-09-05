@@ -1,0 +1,26 @@
+{
+  "name": "fse-project1",
+  "version": "1.0.0",
+  "description": "FSE Project 1 ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okareracmu/FSE-Project1.git"
+  },
+  "keywords": [
+    "FSE",
+    "Project"
+  ],
+  "author": "Olivier KARERA (okarera)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/okareracmu/FSE-Project1/issues"
+  },
+  "homepage": "https://github.com/okareracmu/FSE-Project1#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
