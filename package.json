@@ -28,6 +28,7 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
+    "express-socket.io-session": "^1.3.5",
     "fse-project1": "file:",
     "pg": "^8.12.0",
     "socket.io": "^4.7.5"

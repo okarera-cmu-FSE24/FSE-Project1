@@ -24,25 +24,26 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.container .chatsection {
+.container .chatSection {
   height: 86%;
   padding: 1em;
   overflow: auto;
 }
-.container .chatsection .chat-message {
+.container .chatSection .chat-message {
   max-width: 50%;
   width: -moz-fit-content;
   width: fit-content;
   padding: 0.5em 1em;
+  list-style: none;
   overflow: visible;
 }
-.container .chatsection .chat-message .text {
+.container .chatSection .chat-message .text {
   background-color: #59966d;
   padding: 0.5em 1em;
   border-radius: 5px;
   color: rgb(228, 252, 236);
 }
-.container .chatsection .chat-message .username-time {
+.container .chatSection .chat-message .username-time {
   display: flex;
   justify-content: space-between;
   font-size: 0.7rem;

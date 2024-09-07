@@ -25,7 +25,7 @@
         }
     }
 
-    .chatsection{
+    .chatSection{
         height: 86%;
         padding: 1em;
         overflow: auto;
@@ -34,6 +34,7 @@
             max-width: 50%;
             width: fit-content;
             padding: .5em 1em;
+            list-style: none;
            
             overflow: visible;
             .text{

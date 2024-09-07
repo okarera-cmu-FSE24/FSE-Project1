@@ -1,12 +1,13 @@
 const pool = require('../config/db');
 
+// Message Model or class that represents messages table in database
 class Message {
   constructor(username, text) {
     this.username = username;
     this.text = text;
   }
 
-  // Save the message to the database
+  // Saving the message to the database
   async save() {
     const result = await pool.query(
       'INSERT INTO messages (username, text, created_at) VALUES ($1, $2, NOW()) RETURNING id',

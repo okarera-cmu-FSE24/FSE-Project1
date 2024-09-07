@@ -1,3 +1,4 @@
+//Login handler
 document.getElementById('loginForm').addEventListener('submit', async function(event) {
     event.preventDefault();
   
@@ -9,11 +10,13 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, password }),
+      credentials: 'include'
     });
   
     const data = await response.json();
     if (response.ok) {
+      localStorage.setItem('username', data.username);
       window.location.href = "chatroom.html"
     } else {
       alert(data.error);

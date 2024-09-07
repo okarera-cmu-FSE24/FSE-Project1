@@ -1,7 +1,8 @@
 const User = require('../models/User');
 
+// Class that will handle the authentication
 class AuthService {
-  // Register a new user
+  // Registering a new user
   async register(username, password) {
     const existingUser = await User.findByUsername(username);
     console.log(username,password);
@@ -12,12 +13,9 @@ class AuthService {
 
     console.log("no user found");
     
-
     const newUser = new User(username, password);
-    console.log("test0");
     
     const userId = await newUser.save();
-    console.log("test");
     
     return userId;
   }
@@ -28,7 +26,6 @@ class AuthService {
     if (!user) {
       throw new Error('User not found');
     }
-
     const isMatch = await User.comparePassword(password, user.password);
     if (!isMatch) {
       throw new Error('Invalid password');
@@ -36,6 +33,11 @@ class AuthService {
 
     return user.id;
   }
+
+  
 }
 
 module.exports = AuthService;
+
+
+

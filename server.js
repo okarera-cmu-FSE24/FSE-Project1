@@ -1,70 +1,84 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const sharedSession = require('express-socket.io-session');
 const http = require('http');
 const { Server } = require('socket.io');
 const authRoutes = require('./routes/authRoutes');
 const chatRoutes = require('./routes/chatRoutes');
 const Message = require('./models/Message');
-const path = require('path');
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
 const cors = require('cors');
+const { log } = require('console');
 
-// Middleware
-app.use(cors());
+
+//Configurations
+const io = new Server(server,{
+  cors: {
+    origin: 'http://127.0.0.1:5500', // Allowing requests from this localhost (5500 port)
+    methods: ['GET', 'POST'],
+    credentials: true
+  }
+});
+
+// Middlewares
+app.use(cors({
+  origin: 'http://127.0.0.1:5500',
+  credentials: true
+}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
 
-// Session middleware (ensure this is included so the session is shared across routes and Socket.IO)
-app.use(session({
-  secret: 'snfksdmsmkfnslkow4k924u9fsmknvwk#EQ#4vwsxbvks(',
+// Session middleware 
+const sessionMiddleware = session({
+  secret: "snfksdmsmkfnslkow4k924u9fsmknvwk#EQ#4vwsxbvks(",
   resave: false,
   saveUninitialized: false,
-}));
+ 
+});
+app.use(sessionMiddleware);
+
+app.set('sessionMiddleware', sessionMiddleware);
+io.use(
+  sharedSession(sessionMiddleware,{
+    autoSave: true
+  })
+);
 
 // Routes
 app.use(authRoutes);
 app.use(chatRoutes);
 
 
-
-app.get('/chat', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'chat.html'));
-});
-
-// Handle Socket.IO connections
+// Handling Socket.IO connections
 io.on('connection', (socket) => {
-  console.log('A user connected');
+  console.log('user connected');
 
-  // Get the session from the socket
-  const session = socket.request.session;
-  
-  // Listen for chatMessage event and save it with the username from session
+  // Listening for chatMessage event and save it with the username from session
   socket.on('chatMessage', async (msg) => {
-    const username = session.username; // Get the username from session
-    
-    if (!username) {
+
+    if (!msg.username) {
+      
       socket.emit('errorMessage', 'You need to be logged in to send messages');
       return;
     }
 
-    // Save the message with the username
-    const message = new Message(username, msg.text);
+    // Saving the message with the username
+    const message = new Message(msg.username, msg.text);
     const savedMessage = await message.save();
     
-    // Broadcast the message, with "Me" replaced for the sender
+    // Broadcasting the message
     io.emit('message', { 
-      username: username === session.username ? 'Me' : username, 
+      username: message.username, 
       text: msg.text, 
       created_at: new Date().toLocaleString() 
     });
   });
 
   socket.on('disconnect', () => {
-    console.log('A user disconnected');
+    console.log('user disconnected');
   });
 });
 

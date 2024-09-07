@@ -1,7 +1,6 @@
 const Message = require('../models/Message');
-const session = require('express-session');
 
-// Handle fetching all messages (for when a user joins the chat)
+// fetching all messages handler 
 exports.getAllMessages = async (req, res) => {
   try {
     const messages = await Message.getAll();
@@ -11,7 +10,7 @@ exports.getAllMessages = async (req, res) => {
   }
 };
 
-// Handle sending a message
+// sending message handler
 exports.sendMessage = async (req, res) => {
   const { username, text } = req.body;
   
