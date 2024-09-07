@@ -37,4 +37,8 @@
 .container .second-container p {
   width: -moz-fit-content;
   width: fit-content;
+}
+.container .second-container p a {
+  color: #60976e;
+  text-decoration: underline;
 }/*# sourceMappingURL=auth.css.map */
