@@ -41,6 +41,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     const listItem = document.createElement('li');
     listItem.classList.add("chat-message")
     const username = message.username === localStorage.getItem("username")? "Me": message.username
+    if (username === "Me"){
+      listItem.classList.add("chat-message-me")
+    }
     listItem.innerHTML = `
     <p class="text" id="text">${message.text}</p>
             <div class="username-time">

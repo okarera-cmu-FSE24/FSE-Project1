@@ -13,6 +13,9 @@
   gap: 2em;
   align-items: center;
 }
+.container .secondContainer h2 {
+  text-align: center;
+}
 .container .secondContainer form {
   display: flex;
   flex-direction: column;
@@ -41,4 +44,13 @@
 .container .secondContainer p a {
   color: #60976e;
   text-decoration: underline;
+}
+
+@media screen and (max-width: 540px) {
+  .container {
+    padding: 2em;
+  }
+  .container .secondContainer {
+    padding: 5em 2em;
+  }
 }/*# sourceMappingURL=auth.css.map */
