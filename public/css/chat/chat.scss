@@ -1,0 +1,74 @@
+
+.body{
+    background-color: white!important;
+    background-image: linear-gradient(to bottom, white, white);
+    overflow: hidden;
+}
+.container{
+    background-color: white;
+    height: 100%;
+    .header{
+        background-color: white;
+        width: 100%;
+        box-shadow: 0px 5px 5px rgb(234, 235, 236);
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 1em;
+        height: 7%;
+
+        h2{
+            background: linear-gradient(to bottom, #47BE68, #1C3623);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    .chatsection{
+        height: 86%;
+        padding: 1em;
+        overflow: auto;
+        .chat-message{
+            
+            max-width: 50%;
+            width: fit-content;
+            padding: .5em 1em;
+           
+            overflow: visible;
+            .text{
+                background-color: #59966d;
+                padding: .5em 1em;
+                border-radius: 5px;
+                color: rgb(228, 252, 236);
+            }
+            .username-time{
+                display: flex;
+                justify-content: space-between;
+                font-size: .7rem;
+            }
+
+
+        }
+    }
+    .message{
+        position: sticky;
+        bottom: 0px;
+        box-shadow: 0px -5px 5px rgb(234, 235, 236);
+        display: flex;
+        justify-content: space-between;
+        padding: 1em;
+        height: 7%;
+        gap: 1em;
+
+        input{
+            border: none;
+            width: 100%;
+            outline: none;
+
+            &::placeholder{
+                color: #9da39f;
+            }
+        }
+    }
+}

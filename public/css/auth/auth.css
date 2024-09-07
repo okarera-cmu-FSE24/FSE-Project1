@@ -1,0 +1,40 @@
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .second-container {
+  background-color: white;
+  padding: 10em;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  gap: 2em;
+  align-items: center;
+}
+.container .second-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  width: 100%;
+}
+.container .second-container form input {
+  padding: 1em;
+  border-radius: 5px;
+  border: 1px solid #e5ece5;
+  width: 100%;
+  outline: none;
+}
+.container .second-container form input:focus {
+  border-color: #40d167;
+}
+.container .second-container form button {
+  padding: 1em;
+  width: 100%;
+}
+.container .second-container p {
+  width: -moz-fit-content;
+  width: fit-content;
+}/*# sourceMappingURL=auth.css.map */
