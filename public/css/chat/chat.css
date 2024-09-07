@@ -84,7 +84,7 @@
 
 @media screen and (max-width: 540px) {
   .container .header, .container .message {
-    height: 10vh;
+    height: 70px;
   }
   .chatSection {
     height: 75vh;
