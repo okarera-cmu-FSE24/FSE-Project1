@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
 }
-.container .second-container {
+.container .secondContainer {
   background-color: white;
   padding: 10em;
   display: flex;
@@ -13,32 +13,32 @@
   gap: 2em;
   align-items: center;
 }
-.container .second-container form {
+.container .secondContainer form {
   display: flex;
   flex-direction: column;
   gap: 1em;
   align-items: center;
   width: 100%;
 }
-.container .second-container form input {
+.container .secondContainer form input {
   padding: 1em;
   border-radius: 5px;
   border: 1px solid #e5ece5;
   width: 100%;
   outline: none;
 }
-.container .second-container form input:focus {
+.container .secondContainer form input:focus {
   border-color: #40d167;
 }
-.container .second-container form button {
+.container .secondContainer form button {
   padding: 1em;
   width: 100%;
 }
-.container .second-container p {
+.container .secondContainer p {
   width: -moz-fit-content;
   width: fit-content;
 }
-.container .second-container p a {
+.container .secondContainer p a {
   color: #60976e;
   text-decoration: underline;
 }/*# sourceMappingURL=auth.css.map */

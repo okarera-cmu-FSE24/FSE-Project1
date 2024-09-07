@@ -6,14 +6,17 @@ const { Server } = require('socket.io');
 const authRoutes = require('./routes/authRoutes');
 const chatRoutes = require('./routes/chatRoutes');
 const Message = require('./models/Message');
-
+const path = require('path');
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
+const cors = require('cors');
 
 // Middleware
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('public'));
+
 
 // Session middleware (ensure this is included so the session is shared across routes and Socket.IO)
 app.use(session({
@@ -25,6 +28,12 @@ app.use(session({
 // Routes
 app.use(authRoutes);
 app.use(chatRoutes);
+
+
+
+app.get('/chat', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'chat.html'));
+});
 
 // Handle Socket.IO connections
 io.on('connection', (socket) => {
