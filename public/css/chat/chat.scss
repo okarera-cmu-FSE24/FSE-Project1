@@ -67,12 +67,14 @@
     .message{
         position: sticky;
         bottom: 0px;
+        background-color: white;
         box-shadow: 0px -5px 5px rgb(234, 235, 236);
         display: flex;
         justify-content: space-between;
         padding: 1em;
         height: 8vh;
         gap: 1em;
+        z-index: 10;
 
         input{
             border: none;
@@ -88,7 +90,15 @@
 
 
 @media screen and (max-width: 540px){
+    .container{
+
+        .header,.message{
+            height: 10vh;
+        }
+        
+    }
     .chatSection{
+        height: 75vh;
         width: 100%;
         .chat-message{
             max-width: 100%!important;
